@@ -11,17 +11,10 @@ public interface IntakeIO {
     public double intakeCurrent = 0.0;
   }
 
-  /** Run open loop at the specified voltage. */
+
   public default void setDeployVoltage(double volts) {}
 
-  /** Stop in open loop. */
-  public default void stopDeploy() {}
-
-  public default void resetDeployEncoder() {}
-
-  public default void setCollectVoltage(double volts) {}
-  /** Stop in open loop. */
-  public default void stopCollect() {}
+  public default void setIntakeVoltage(double volts) {}
 
   public default void updateInputs(IntakeInputs inputs) {}
 }
