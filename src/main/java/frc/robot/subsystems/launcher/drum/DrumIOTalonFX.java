@@ -60,8 +60,11 @@ public class DrumIOTalonFX implements DrumIO {
 
   public void configMotors() {
     /* Config values */
-    drumConfig.CurrentLimits.SupplyCurrentLimit = 40;
+    drumConfig.CurrentLimits.SupplyCurrentLimit = 0;
     drumConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
+
+    drumConfig.CurrentLimits.StatorCurrentLimit = 0;
+    drumConfig.CurrentLimits.StatorCurrentLimitEnable = true; // TODO: set limits
 
     drumConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
     drumConfig.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
@@ -87,7 +90,8 @@ public class DrumIOTalonFX implements DrumIO {
     /* Set followers */
     BRDrumMotor.setControl(new Follower(0, MotorAlignmentValue.Aligned));
     TLDrumMotor.setControl(new Follower(0, MotorAlignmentValue.Opposed));
-    BLDrumMotor.setControl(new Follower(0, MotorAlignmentValue.Opposed)); //TODO: set ids to top right motor id
+    BLDrumMotor.setControl(
+        new Follower(0, MotorAlignmentValue.Opposed)); // TODO: set ids to top right motor id
 
     /* Optimize bus utilization for all motors */
     TRDrumMotor.optimizeBusUtilization();
@@ -161,7 +165,6 @@ public class DrumIOTalonFX implements DrumIO {
   }
 
   /* Methods */
-
   @Override
   public void setVoltageDrum(double volts) {
     TRDrumMotor.setControl(voltageRequest.withOutput(volts));
