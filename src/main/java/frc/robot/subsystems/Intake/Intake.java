@@ -21,6 +21,14 @@ public class Intake extends SubsystemBase {
     intakeIO.setIntakeVoltage(volts);
   }
 
+  public void stopDeploy() {
+    intakeIO.stopDeploy();
+  }
+
+  public void stopIntake() {
+    intakeIO.stopIntake();
+  }
+
   @Override
   public void periodic() {
     intakeIO.updateInputs(intakeInputs);

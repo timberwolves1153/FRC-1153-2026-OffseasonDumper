@@ -16,5 +16,9 @@ public interface IntakeIO {
 
   public default void setIntakeVoltage(double volts) {}
 
+  public default void stopDeploy() {}
+
+  public default void stopIntake() {}
+
   public default void updateInputs(IntakeInputs inputs) {}
 }
